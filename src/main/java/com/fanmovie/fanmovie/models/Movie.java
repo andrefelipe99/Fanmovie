@@ -1,7 +1,9 @@
 package com.fanmovie.fanmovie.models;
 
-import java.util.Date;
+import java.util.List;
 import java.util.Map;
+
+import info.movito.themoviedbapi.model.MovieDb;
 
 public class Movie {
 	
@@ -10,7 +12,8 @@ public class Movie {
 	private String original_lang;
 	private String overview;
 	private String status;
-	private Date release_date;
+	private List<String> categoryList;
+	private String release_date;
 	private int id;
 	private int duracao_min;
 	private float vote_average;
@@ -21,6 +24,22 @@ public class Movie {
 	public Movie() {
 		
 	}
+	
+	
+	public Movie(MovieDb movie ,List<String> categoryList) {
+		this.categoryList = categoryList;
+		this.title = movie.getTitle();
+		this.imdb_id = movie.getImdbID();
+		this.original_lang = movie.getOriginalLanguage();
+		this.overview = movie.getOverview();
+		this.status = movie.getStatus();
+		this.release_date = movie.getReleaseDate();
+		this.id = movie.getId();
+		this.duracao_min = movie.getRuntime();
+		this.vote_average = movie.getVoteAverage();
+	}
+
+
 
 	//getters and setters
 	public String getTitle() {
@@ -63,11 +82,11 @@ public class Movie {
 		this.status = status;
 	}
 
-	public Date getRelease_date() {
+	public String getRelease_date() {
 		return release_date;
 	}
 
-	public void setRelease_date(Date release_date) {
+	public void setRelease_date(String release_date) {
 		this.release_date = release_date;
 	}
 
@@ -101,6 +120,14 @@ public class Movie {
 
 	public void setGenre(Map<Integer, String> genre) {
 		this.genre = genre;
+	}
+
+	public List<String> getCategoryList() {
+		return categoryList;
+	}
+
+	public void setCategoryList(List<String> categoryList) {
+		this.categoryList = categoryList;
 	}
 	
 	
