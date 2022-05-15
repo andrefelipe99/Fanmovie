@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fan Movie</title>
+</head>
+<body>
+    <div class="nav-bar">
+        <div id="logo">
+            <a th:href="@{'/'}">Fan Movie logo</a>
+        </div>
+        
+        <ul>
+            <li><a th:href="@{'/showResult'}">show result</a></li>
+            <li><a th:href="@{'/test'}">Planejo Assistir</a></li>
+            <li><a th:href="@{'/test'}">Favoritos</a></li>
+          </ul>
+    </div>
+        
+        <h1>&#9940 Erro: Campo Vazio</h1>
+        <h2>&#10060 Digite um nome válido para a pesquisa.</h2>
+</body>
+</html>

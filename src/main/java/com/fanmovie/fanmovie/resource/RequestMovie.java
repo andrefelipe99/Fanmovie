@@ -18,7 +18,7 @@ public class RequestMovie {
 	
 	
 	public RequestMovie() {
-		
+		this.apiKey = "a2f88bffa883d520f4fbd55a6045d697";
 	}
 	
 	public RequestMovie(String apiKey) {
