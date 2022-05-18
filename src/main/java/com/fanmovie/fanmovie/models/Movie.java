@@ -3,8 +3,18 @@ package com.fanmovie.fanmovie.models;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MapKeyColumn;
+import javax.persistence.Table;
+
 import info.movito.themoviedbapi.model.MovieDb;
 
+@Entity
+@Table(name = "MOVIE")
 public class Movie {
 	
 	//Vai servir pra linkar o filme a um perfil de usuário
@@ -15,12 +25,16 @@ public class Movie {
 	private String original_lang;
 	private String overview;
 	private String status;
-	private List<String> categoryList;
+	private String categoryList;
 	private String release_date;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private int duracao_min;
 	private float vote_average;
 	
+	@ElementCollection(targetClass=Integer.class)
+    @MapKeyColumn(name="Employee_Position")
 	private Map<Integer, String> genre;
 
 	
@@ -29,7 +43,7 @@ public class Movie {
 	}
 	
 	
-	public Movie(MovieDb movie ,List<String> categoryList, String idUsuario) {
+	public Movie(MovieDb movie ,String categoryList, String idUsuario) {
 		this.categoryList = categoryList;
 		this.title = movie.getTitle();
 		this.imdb_id = movie.getImdbID();
@@ -126,11 +140,11 @@ public class Movie {
 		this.genre = genre;
 	}
 
-	public List<String> getCategoryList() {
+	public String getCategoryList() {
 		return categoryList;
 	}
 
-	public void setCategoryList(List<String> categoryList) {
+	public void setCategoryList(String categoryList) {
 		this.categoryList = categoryList;
 	}
 
