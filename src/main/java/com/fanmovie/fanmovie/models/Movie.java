@@ -29,7 +29,7 @@ public class Movie {
 	private String release_date;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 	private int duracao_min;
 	private float vote_average;
 	
@@ -108,7 +108,7 @@ public class Movie {
 		this.release_date = release_date;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
