@@ -22,11 +22,11 @@ public class FanmovieController {
 		return new MovieDb();
 	}
 	
-	@GetMapping("/")
+	/*@GetMapping("/")
 	public String test(Model model) {
 		
-		return "/index";
-	}
+		return "/home";
+	}*/
 	
 	//Função de teste, provavelmente irei apagar depois
 	@GetMapping("/test")
