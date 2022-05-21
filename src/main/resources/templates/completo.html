@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fan Movie</title>
+</head>
+
+<body>
+    <div class="nav-bar">
+        <div id="logo">
+            <a th:href="@{'/'}">Fan Movie logo</a>
+        </div>
+
+        <ul>
+            <li><a th:href="@{'/completo'}">Completos</a></li>
+            <li><a th:href="@{'/planAssistir'}">Planejo Assistir</a></li>
+            <li><a th:href="@{'/favorito'}">Favoritos</a></li>
+        </ul>
+    </div>
+    <!--<p th:text="${oneMovie.title}"></p>-->
+    <h1>Completos</h1>
+    <tbody>
+        <table border="1">
+            <tr>
+                <th>Nome</th>
+                <th>Idioma Original</th>
+                <th>Lançamento</th>
+                <th>Duração</th>
+                <th>Nota</th>
+                <th>Sinopse</th>
+                <th>Status</th>
+                <th>Gênero(s)</th>
+            </tr>
+            <tr th:each="movie: ${movieList}">
+                <td th:text="${movie.title}"></td>
+                <td th:text="${movie.original_lang}"></td>
+                <td th:text="${movie.releaseDate}"></td>
+                <td th:text="${movie.duracao_min}"></td>
+                <td th:text="${movie.voteAverage}"></td>
+                <td th:text="${movie.overview}"></td>
+                <td th:text="${movie.status}"></td>
+                <td th:text="${movie.genero}"></td>
+            </tr>
+        </table>
+    </tbody>
+</body>
+
+</html>

@@ -30,7 +30,6 @@ public class RequestMovie {
 		TmdbSearch search = new TmdbApi(this.apiKey).getSearch();
 		
 		MovieResultsPage resultPage = search.searchMovie(movieName, null, "pt-BR", false, null);
-		
 		return resultPage;
 	}
 	
