@@ -34,6 +34,7 @@
                 <th>Status</th>
                 <th>Gênero(s)</th>
             </tr>
+            <!--falta listar os filmes, criar a função pra isso, movieList não é a variavel certa-->
             <tr th:each="movie: ${movieList}">
                 <td th:text="${movie.title}"></td>
                 <td th:text="${movie.original_lang}"></td>
@@ -43,6 +44,7 @@
                 <td th:text="${movie.overview}"></td>
                 <td th:text="${movie.status}"></td>
                 <td th:text="${movie.genero}"></td>
+                <td><a th:href="@{'/removerMovie/'} + @{movie.id}">remover</a></td>
             </tr>
         </table>
     </tbody>

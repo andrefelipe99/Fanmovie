@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fanmovie.fanmovie.models.Movie;
@@ -25,9 +26,13 @@ public class FanmovieController {
 		return new MovieDb();
 	}
 
-	// Função que faz a pesquisa de um filme
-
-	@PostMapping("/")
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String index() {
+		return "/home";
+	}
+	
+	// Função que faz a 1pesquisa de um filme
+	@PostMapping("/home")
 	public String searchMovie(@RequestParam(name = "movieName", required = false) String movieName, Model model) {
 
 		if (movieName.isBlank()) {
@@ -87,6 +92,24 @@ public class FanmovieController {
 	public String showResult(Model model) {
 
 		return "/showResult";
+	}
+	
+	@GetMapping("/planAssistir")
+	public String telaPlanAssistir(Model model) {
+
+		return "/planAssistir";
+	}
+	
+	@GetMapping("/completo")
+	public String telacompleto(Model model) {
+
+		return "/completo";
+	}
+	
+	@GetMapping("/favorito")
+	public String telaFavorito(Model model) {
+
+		return "/favorito";
 	}
 
 }

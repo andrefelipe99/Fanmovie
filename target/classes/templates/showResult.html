@@ -1,41 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Fan Movie</title>
 </head>
+
 <body>
     <div class="nav-bar">
         <div id="logo">
-            <a th:href="@{'/'}">Fan Movie logo</a>
+            <a th:href="@{'/home'}">Fan Movie logo</a>
         </div>
-        
+
         <ul>
-            <li><a th:href="@{'/showResult'}">show result</a></li>
-            <li><a th:href="@{'/test'}">Planejo Assistir</a></li>
-            <li><a th:href="@{'/test'}">Favoritos</a></li>
-          </ul>
+            <li><a th:href="@{'/completo'}"><i class="material-icons">check_box</i>Completos</a></li>
+            <li><a th:href="@{'/planAssistir'}"><i class="material-icons">indeterminate_check_box</i>Planejo
+                    Assistir</a></li>
+            <li><a th:href="@{'/favorito'}"><i class="material-icons">star</i>Favoritos</a></li>
+        </ul>
     </div>
-        <!--<p th:text="${oneMovie.title}"></p>-->
-        <h1>Resultado</h1>
-        <tbody>
-            <table border="1">
-                <tr>
-                    <th>Nome</th>
-                    <th>Lançamento</th>
-                    <th>Nota</th>
-                </tr>
-                <tr th:each ="movie: ${movieList}">
-                    <td th:text="${movie.title}"></td>
-                    <td th:text="${movie.releaseDate}"></td>
-                    <td th:text="${movie.voteAverage}"></td>
-                    <td><a th:href="@{'/addCompleteMovie/'} + ${movie.id}">Completo</a></td>
-                    <td><a th:href="@{'/favoritoMovie/'} + ${movie.id}">Favorito</a></td>
-                    <td><a th:href="@{'/planAssistirMovie/'} + ${movie.id}">Planejo Assistir</a></td>
-                </tr>
-            </table>
-        </tbody>
+    <h1>Resultado</h1>
+    <i class="material-icons">cloud</i>
+    <i class="material-icons">favorite</i>
+    <i class="material-icons">attachment</i>
+    <i class="material-icons">computer</i>
+    <i class="material-icons">traffic</i>
+    <span class="material-symbols-outlined">star</span>
+    <tbody>
+        <table border="1">
+            <tr>
+                <th>Nome</th>
+                <th>Lançamento</th>
+                <th>Nota</th>
+            </tr>
+            <tr th:each="movie: ${movieList}">
+                <td th:text="${movie.title}"></td>
+                <td th:text="${movie.releaseDate}"></td>
+                <td th:text="${movie.voteAverage}"></td>
+                <td><a th:href="@{'/addCompleteMovie/'} + ${movie.id}"><i class="material-icons">check_box</i>
+                    </a></td>
+
+                <td><a th:href="@{'/favoritoMovie/'} + ${movie.id}"><i class="material-icons">star</i></a></td>
+
+                <td><a th:href="@{'/planAssistirMovie/'} + ${movie.id}"><i
+                            class="material-icons">indeterminate_check_box</i></a></td>
+            </tr>
+        </table>
+    </tbody>
 </body>
+
 </html>
