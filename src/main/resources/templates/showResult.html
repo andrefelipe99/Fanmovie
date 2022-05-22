@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-	<title>Fan Movie</title>
+	<title>FanMovie Pesquisa</title>
 </head>
 
 <body>
@@ -36,15 +36,14 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" th:href="@{'/completo'}"
-							title="Filmes Completos">Completos</a>
+						<a class="nav-link" aria-current="page" th:href="@{'/completo'}" title="Completos">Completos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" th:href="@{'/planAssistir'}" title="Filmes Planejo Assitir">Planejo
+						<a class="nav-link" th:href="@{'/planAssistir'}" title="Planejo Assitir">Planejo
 							Assitir</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" th:href="@{'/favorito'}" title="Filmes Favoritos">Favoritos</a>
+						<a class="nav-link" th:href="@{'/favorito'}" title="Favoritos">Favoritos</a>
 					</li>
 				</ul>
 				<form class="d-flex" role="search" th:action="@{'/showResult'}" method="post">
@@ -81,14 +80,14 @@
 				<td th:text="${movie.releaseDate}"></td>
 				<td th:text="${movie.voteAverage}"></td>
 				<td><a th:href="@{'/addCompleteMovie/'} + ${movie.id}"><i class="material-icons"
-							title="Filmes Completos">check_box</i>
+							title="Completos">check_box</i>
 					</a></td>
 
 				<td><a th:href="@{'/favoritoMovie/'} + ${movie.id}"><i class="material-icons"
-							title="Filmes Favoritos">star</i></a></td>
+							title="Favoritos">star</i></a></td>
 
 				<td><a th:href="@{'/PlanAssistirMovie/'} + ${movie.id}"><i class="material-icons"
-							title="Filmes Planejo Assitir">indeterminate_check_box</i></a></td>
+							title="Planejo Assistir">indeterminate_check_box</i></a></td>
 			</tr>
 		</table>
 	</tbody>

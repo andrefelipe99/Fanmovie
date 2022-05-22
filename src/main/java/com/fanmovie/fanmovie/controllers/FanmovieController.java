@@ -121,7 +121,7 @@ public class FanmovieController {
 
 	// adicionar filme como "planejo assistir"
 	@RequestMapping(value = "/PlanAssistirMovie/{codigo}", method = RequestMethod.GET)
-	public String adicionarMoviePlanAssistir(@PathVariable("codigo") int codigo) {
+	public String adicionarMoviePlanAssistir(@PathVariable("codigo") int codigo, RedirectAttributes attributes) {
 		if(this.idUsuarioAtual == -1) {
 			return "redirect:/";
 		}
@@ -132,7 +132,10 @@ public class FanmovieController {
 		
 		for (Movie m : movieList) {
 			if(m.getCodigo() == codigo && m.getCategory().equalsIgnoreCase("Planejo Assistir") && m.getIdUsuario() == this.idUsuarioAtual) {
+				attributes.addFlashAttribute("flashMessage", "Este filme já foi adicionado nesta lista!");
+				attributes.addFlashAttribute("flashType", "danger");				
 				existe = true;
+				return "redirect:/showResult";
 			}
 		}
 		
@@ -146,7 +149,7 @@ public class FanmovieController {
 
 	// adicionar filme como "favorito"
 	@RequestMapping(value = "/favoritoMovie/{codigo}", method = RequestMethod.GET)
-	public String adicionarMovieFavorito(@PathVariable("codigo") int codigo) {
+	public String adicionarMovieFavorito(@PathVariable("codigo") int codigo, RedirectAttributes attributes) {
 		if(this.idUsuarioAtual == -1) {
 			return "redirect:/";
 		}
@@ -157,7 +160,10 @@ public class FanmovieController {
 		
 		for (Movie m : movieList) {
 			if(m.getCodigo() == codigo && m.getCategory().equalsIgnoreCase("Favorito") && m.getIdUsuario() == this.idUsuarioAtual) {
+				attributes.addFlashAttribute("flashMessage", "Este filme já foi adicionado nesta lista!");
+				attributes.addFlashAttribute("flashType", "danger");				
 				existe = true;
+				return "redirect:/showResult";
 			}
 		}
 		
