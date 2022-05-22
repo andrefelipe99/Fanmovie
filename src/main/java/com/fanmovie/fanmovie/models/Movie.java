@@ -27,7 +27,7 @@ import info.movito.themoviedbapi.model.MovieDb;
 public class Movie {
 	
 	//Vai servir pra linkar o filme a um perfil de usuário
-	private Long idUsuario;
+	private long idUsuario;
 	
 	private String title;
 	private String imdb_id;
@@ -52,7 +52,7 @@ public class Movie {
 	}
 	
 	
-	public Movie(MovieDb movie ,String category, Long idUsuario) {
+	public Movie(MovieDb movie ,String category, long idUsuario) {
 		this.category = category;
 		this.title = movie.getTitle();
 		this.imdb_id = movie.getImdbID();
@@ -170,12 +170,12 @@ public class Movie {
 	}
 
 
-	public Long getIdUsuario() {
+	public long getIdUsuario() {
 		return idUsuario;
 	}
 
 
-	public void setIdUsuario(Long idUsuario) {
+	public void setIdUsuario(long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 	
