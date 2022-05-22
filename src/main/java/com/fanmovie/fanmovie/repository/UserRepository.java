@@ -9,4 +9,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	@Query(value="SELECT * from users where email = :email and password = :password", nativeQuery = true)
 	public User Login(String email, String password);
+	
+	
+	User findByEmail(String email);
 }

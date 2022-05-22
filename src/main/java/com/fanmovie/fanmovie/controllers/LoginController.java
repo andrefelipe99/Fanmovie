@@ -21,10 +21,12 @@ public class LoginController {
 	
 
 	@RequestMapping(value = "/logar", method = RequestMethod.POST)
-	public String logar(User user) {
+	public String logar(User user, RedirectAttributes attributes) {
 		User u = this.repo.Login(user.getEmail(), user.getPassword());
 
 		if (u == null) {
+			attributes.addFlashAttribute("flashMessage", "Email ou Senha Inválidos!");
+			attributes.addFlashAttribute("flashType", "danger");
 			return "redirect:/";
 		}
 

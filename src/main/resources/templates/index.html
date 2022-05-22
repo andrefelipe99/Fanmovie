@@ -22,6 +22,10 @@
 				<label for="password" class="form-label">Senha</label>
 				<input type="password" class="form-control" id="password" name="password">
 			</div>
+			<div th:if="${flashMessage != null}">
+				<div th:replace="exception/mensagemValidacao :: alert (type=${flashType}, message=${flashMessage})">
+				</div>
+			</div>
 			<div class="d-grid gap-2 d-md-block">
 				<button type="submit" class="btn btn-success" id="btn-submit">Login</button>
 				<a class="btn btn-secondary" href="/registerUser" role="button">Cadastrar</a>
@@ -31,4 +35,5 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 		crossorigin="anonymous"></script>
+
 </html>
