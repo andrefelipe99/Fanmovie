@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>Fan Movie</title>
 </head>
 
@@ -15,12 +16,12 @@
         </div>
 
         <ul>
-            <li><a th:href="@{'/completo'}">Completos</a></li>
-            <li><a th:href="@{'/planAssistir'}">Planejo Assistir</a></li>
-            <li><a th:href="@{'/favorito'}">Favoritos</a></li>
+            <li><a th:href="@{'/completo'}"><i class="material-icons">check_box</i>Completos</a></li>
+            <li><a th:href="@{'/planAssistir'}"><i class="material-icons">indeterminate_check_box</i>Planejo
+                    Assistir</a></li>
+            <li><a th:href="@{'/favorito'}"><i class="material-icons">star</i>Favoritos</a></li>
         </ul>
     </div>
-    <!--<p th:text="${oneMovie.title}"></p>-->
     <h1>Planejo Assistir</h1>
     <tbody>
         <table border="1">
@@ -32,18 +33,16 @@
                 <th>Nota</th>
                 <th>Sinopse</th>
                 <th>Status</th>
-                <th>Gênero(s)</th>
             </tr>
-            <!--falta listar os filmes, criar a função pra isso, movieList não é a variavel certa-->
             <tr th:each="movie: ${movieList}">
                 <td th:text="${movie.title}"></td>
                 <td th:text="${movie.original_lang}"></td>
-                <td th:text="${movie.releaseDate}"></td>
-                <td th:text="${movie.duracao_min}"></td>
-                <td th:text="${movie.voteAverage}"></td>
+                <td th:text="${movie.release_date}"></td>
+                <td th:text="${movie.duracao_min} + min"></td>
+                <td th:text="${movie.vote_average}"></td>
                 <td th:text="${movie.overview}"></td>
                 <td th:text="${movie.status}"></td>
-                <td th:text="${movie.genero}"></td>
+                <td><a th:href="@{'/removerMovie/'} + ${movie.id}"><i class="material-icons">delete_forever</i></a></td>
             </tr>
         </table>
     </tbody>

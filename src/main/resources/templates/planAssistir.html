@@ -12,7 +12,7 @@
 <body>
     <div class="nav-bar">
         <div id="logo">
-            <a th:href="@{'/'}">Fan Movie logo</a>
+            <a th:href="@{'/home'}">Fan Movie logo</a>
         </div>
 
         <ul>
@@ -22,7 +22,6 @@
             <li><a th:href="@{'/favorito'}"><i class="material-icons">star</i>Favoritos</a></li>
         </ul>
     </div>
-    <!--<p th:text="${oneMovie.title}"></p>-->
     <h1>Planejo Assistir</h1>
     <tbody>
         <table border="1">
@@ -34,19 +33,16 @@
                 <th>Nota</th>
                 <th>Sinopse</th>
                 <th>Status</th>
-                <th>Gênero(s)</th>
             </tr>
-            <!--falta listar os filmes, criar a função pra isso, movieList não é a variavel certa-->
             <tr th:each="movie: ${movieList}">
                 <td th:text="${movie.title}"></td>
                 <td th:text="${movie.original_lang}"></td>
-                <td th:text="${movie.releaseDate}"></td>
-                <td th:text="${movie.duracao_min}"></td>
-                <td th:text="${movie.voteAverage}"></td>
+                <td th:text="${movie.release_date}"></td>
+                <td th:text="${movie.duracao_min} + min"></td>
+                <td th:text="${movie.vote_average}"></td>
                 <td th:text="${movie.overview}"></td>
                 <td th:text="${movie.status}"></td>
-                <td th:text="${movie.genero}"></td>
-                <td><a th:href="@{'/removerMovie/'} + @{movie.id}"><i class="material-icons">delete_forever</i></a></td>
+                <td><a th:href="@{'/removerMovie/'} + ${movie.id}"><i class="material-icons">delete_forever</i></a></td>
             </tr>
         </table>
     </tbody>

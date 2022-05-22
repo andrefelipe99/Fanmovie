@@ -25,12 +25,6 @@
         </ul>
     </div>
     <h1>Resultado</h1>
-    <i class="material-icons">cloud</i>
-    <i class="material-icons">favorite</i>
-    <i class="material-icons">attachment</i>
-    <i class="material-icons">computer</i>
-    <i class="material-icons">traffic</i>
-    <span class="material-symbols-outlined">star</span>
     <tbody>
         <table border="1">
             <tr>
@@ -47,7 +41,7 @@
 
                 <td><a th:href="@{'/favoritoMovie/'} + ${movie.id}"><i class="material-icons">star</i></a></td>
 
-                <td><a th:href="@{'/planAssistirMovie/'} + ${movie.id}"><i
+                <td><a th:href="@{'/PlanAssistirMovie/'} + ${movie.id}"><i
                             class="material-icons">indeterminate_check_box</i></a></td>
             </tr>
         </table>

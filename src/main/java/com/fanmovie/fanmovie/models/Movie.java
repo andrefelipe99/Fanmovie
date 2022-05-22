@@ -1,16 +1,24 @@
 package com.fanmovie.fanmovie.models;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MapKeyColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.type.ListType;
+
+import info.movito.themoviedbapi.model.Genre;
 import info.movito.themoviedbapi.model.MovieDb;
 
 @Entity
@@ -22,21 +30,21 @@ public class Movie {
 	
 	private String title;
 	private String imdb_id;
-	private String original_lang;
+	private String original_lang;	
+	@Column(columnDefinition = "TEXT")
 	private String overview;
 	private String status;
-	private String categoryList;
+	private String category;
 	private String release_date;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+	private int codigo;
 	private int duracao_min;
-	private float vote_average;
-	
-	@ElementCollection(targetClass=Integer.class)
-    @MapKeyColumn(name="Employee_Position")
-	private Map<Integer, String> genre;
+	private float vote_average;	
+	//@ElementCollection(targetClass=String.class)
+    //@MapKeyColumn(name="genre_id")
+	//private Map<Integer, String> genre;
 
 	
 	public Movie() {
@@ -44,18 +52,23 @@ public class Movie {
 	}
 	
 	
-	public Movie(MovieDb movie ,String categoryList, Long idUsuario) {
-		this.categoryList = categoryList;
+	public Movie(MovieDb movie ,String category, Long idUsuario) {
+		this.category = category;
 		this.title = movie.getTitle();
 		this.imdb_id = movie.getImdbID();
 		this.original_lang = movie.getOriginalLanguage();
 		this.overview = movie.getOverview();
 		this.status = movie.getStatus();
 		this.release_date = movie.getReleaseDate();
-		this.id = movie.getId();
+		this.codigo = movie.getId();
 		this.duracao_min = movie.getRuntime();
 		this.vote_average = movie.getVoteAverage();
 		this.idUsuario = idUsuario;
+		
+		/*for (int i = 0; i < movie.getGenres().size(); i++) {
+			this.genre.put(movie.getGenres().get(i).getId(), movie.getGenres().get(i).getName());
+			
+		}*/
 	}
 
 
@@ -133,20 +146,30 @@ public class Movie {
 		this.vote_average = vote_average;
 	}
 
-	public Map<Integer, String> getGenre() {
+	/*public Map<Integer,String> getGenre() {
 		return genre;
 	}
 
-	public void setGenre(Map<Integer, String> genre) {
+	public void setGenre(Map<Integer,String> genre) {
 		this.genre = genre;
+	}*/
+	
+
+	public String getCategory() {
+		return category;
 	}
 
-	public String getCategoryList() {
-		return categoryList;
+	public int getCodigo() {
+		return codigo;
 	}
 
-	public void setCategoryList(String categoryList) {
-		this.categoryList = categoryList;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 
