@@ -13,7 +13,7 @@
 <body>
 	<div id="main-container">
 		<h1>Tela Login</h1>
-		<form class="user" action="/logar" method="POST">
+		<form class="user" th:action="@{'/logar'}" method="post">
 			<div class="mb-3">
 				<label for="email" class="form-label">Email</label>
 				<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
@@ -28,7 +28,7 @@
 			</div>
 			<div class="d-grid gap-2 d-md-block">
 				<button type="submit" class="btn btn-success" id="btn-submit">Login</button>
-				<a class="btn btn-secondary" href="/registerUser" role="button">Cadastrar</a>
+				<a class="btn btn-secondary" th:href="@{'/registerUser'}" role="button">Cadastrar</a>
 			</div>
 		</form>
 	</div>
