@@ -47,7 +47,7 @@ public class FanmovieController {
 		if(this.idUsuarioAtual == -1) {
 			return "redirect:/";
 		}
-		return "/home";
+		return "home";
 	}
 	
 	@RequestMapping(value = "/deslogar", method = RequestMethod.GET)
@@ -87,7 +87,7 @@ public class FanmovieController {
 			model.addAttribute("movieList", movieList);
 			// System.out.println("Post realizado " + resultSearch.getResults().get(0));
 
-			return "/showResult";
+			return "showResult";
 		}
 	}
 
@@ -197,7 +197,7 @@ public class FanmovieController {
 		if(this.movieList != null) {
 			model.addAttribute("movieList", movieList);
 		}
-		return "/showResult";
+		return "showResult";
 	}
 	
 	@GetMapping("/planAssistir")
@@ -216,7 +216,7 @@ public class FanmovieController {
 		}
 	
 		model.addAttribute("movieList",moviesCompleteList);
-		return "/planAssistir";
+		return "planAssistir";
 	}
 	
 	@GetMapping("/completo")
@@ -234,7 +234,7 @@ public class FanmovieController {
 			}
 		}
 		model.addAttribute("movieList",moviesCompleteList);
-		return "/completo";
+		return "completo";
 	}
 	
 	@GetMapping("/favorito")
@@ -252,6 +252,6 @@ public class FanmovieController {
 			}
 		}
 		model.addAttribute("movieList",moviesCompleteList);
-		return "/favorito";
+		return "favorito";
 	}
 }

@@ -22,7 +22,7 @@ public class LoginController {
 	@GetMapping("/")
 	public String indexLogin(Model model, User u) {
 
-		return "/index";
+		return "index";
 	}
 
 	@RequestMapping(value = "/logar", method = RequestMethod.POST)
