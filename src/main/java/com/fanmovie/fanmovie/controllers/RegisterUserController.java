@@ -51,9 +51,15 @@ public class RegisterUserController {
 	}
 
 	@GetMapping("/")
-	public String index(Model model, User u) {
+	public String indexLogin(Model model, User u) {
 
 		return "/index";
+	}
+	
+	@GetMapping("/index")
+	public String logando(Model model, User u) {
+
+		return "redirect:/";
 	}
 
 }
