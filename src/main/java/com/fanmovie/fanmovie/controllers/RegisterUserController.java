@@ -27,6 +27,12 @@ public class RegisterUserController {
 	public String register(User u, RedirectAttributes attributes) {
 
 		User user = ur.findByEmail(u.getEmail());
+		
+		if(u.getEmail().trim().isBlank() || u.getPassword().trim().isBlank() || u.getName().trim().isBlank()) {
+			attributes.addFlashAttribute("flashMessage", "Campo(s) vazio(s)!");
+			attributes.addFlashAttribute("flashType", "danger");
+			return "redirect:/registerUser";
+		}
 
 		if (user != null) {
 			attributes.addFlashAttribute("flashMessage", "Email já Existente!");

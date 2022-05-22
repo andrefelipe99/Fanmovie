@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -17,20 +18,25 @@ public class LoginController {
 	
 	@Autowired
 	private UserRepository repo;
-
+	
+	/*@RequestMapping(value = "/deslogar", method = RequestMethod.POST)
+	public String deslogar() {
+		System.out.println("a");
+		return "/";
+	}*/
 	
 
 	@RequestMapping(value = "/logar", method = RequestMethod.POST)
 	public String logar(User user, RedirectAttributes attributes) {
 		User u = this.repo.Login(user.getEmail(), user.getPassword());
-
+		
 		if (u == null) {
 			attributes.addFlashAttribute("flashMessage", "Email ou Senha Inválidos!");
 			attributes.addFlashAttribute("flashType", "danger");
 			return "redirect:/";
 		}
-
-		return "redirect:/home";
+		attributes.addAttribute("id", u.getId());
+		return "redirect:/home/{id}";
 	}
 	
 	

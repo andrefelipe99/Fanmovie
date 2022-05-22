@@ -2,6 +2,7 @@ package com.fanmovie.fanmovie.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.persistence.Column;
@@ -36,15 +37,14 @@ public class Movie {
 	private String status;
 	private String category;
 	private String release_date;
+	private String posterPath;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private int codigo;
 	private int duracao_min;
 	private float vote_average;	
-	//@ElementCollection(targetClass=String.class)
-    //@MapKeyColumn(name="genre_id")
-	//private Map<Integer, String> genre;
+	
 
 	
 	public Movie() {
@@ -56,7 +56,7 @@ public class Movie {
 		this.category = category;
 		this.title = movie.getTitle();
 		this.imdb_id = movie.getImdbID();
-		this.original_lang = movie.getOriginalLanguage();
+		this.original_lang = new Locale(movie.getOriginalLanguage()).getDisplayLanguage();
 		this.overview = movie.getOverview();
 		this.status = movie.getStatus();
 		this.release_date = movie.getReleaseDate();
@@ -64,19 +64,25 @@ public class Movie {
 		this.duracao_min = movie.getRuntime();
 		this.vote_average = movie.getVoteAverage();
 		this.idUsuario = idUsuario;
+		this.posterPath = "https://image.tmdb.org/t/p/w300" + movie.getPosterPath();
 		
-		/*for (int i = 0; i < movie.getGenres().size(); i++) {
-			this.genre.put(movie.getGenres().get(i).getId(), movie.getGenres().get(i).getName());
-			
-		}*/
 	}
-
 
 
 	//getters and setters
 	public String getTitle() {
 		return title;
 	}
+
+	public String getPosterPath() {
+		return posterPath;
+	}
+
+
+	public void setPosterPath(String posterPath) {
+		this.posterPath = posterPath;
+	}
+
 
 	public void setTitle(String title) {
 		this.title = title;
@@ -144,16 +150,7 @@ public class Movie {
 
 	public void setVote_average(float vote_average) {
 		this.vote_average = vote_average;
-	}
-
-	/*public Map<Integer,String> getGenre() {
-		return genre;
-	}
-
-	public void setGenre(Map<Integer,String> genre) {
-		this.genre = genre;
-	}*/
-	
+	}	
 
 	public String getCategory() {
 		return category;
