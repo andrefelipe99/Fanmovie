@@ -28,7 +28,7 @@ public class FanmovieController {
 	@Autowired
 	private MovieRepository mr;	
 	private List<MovieDb> movieList;
-	private long idUsuarioAtual = -1;
+	private long idUsuarioAtual = 1;
 
 	@ModelAttribute
 	public MovieDb init() {
