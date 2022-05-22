@@ -49,17 +49,4 @@ public class RegisterUserController {
 	public String register() {
 		return "formUser";
 	}
-
-	@GetMapping("/")
-	public String indexLogin(Model model, User u) {
-
-		return "/index";
-	}
-	
-	@GetMapping("/index")
-	public String logando(Model model, User u) {
-
-		return "redirect:/";
-	}
-
 }

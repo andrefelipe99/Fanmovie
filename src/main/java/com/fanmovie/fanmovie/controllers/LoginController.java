@@ -17,7 +17,13 @@ import com.fanmovie.fanmovie.repository.UserRepository;
 public class LoginController {
 	
 	@Autowired
-	private UserRepository repo;	
+	private UserRepository repo;
+	
+	@GetMapping("/")
+	public String indexLogin(Model model, User u) {
+
+		return "/index";
+	}
 
 	@RequestMapping(value = "/logar", method = RequestMethod.POST)
 	public String logar(User user, RedirectAttributes attributes) {
