@@ -31,7 +31,7 @@ public class Movie {
 	
 	private String title;
 	private String imdb_id;
-	private String original_lang;	
+	private String original_lang;
 	@Column(columnDefinition = "TEXT")
 	private String overview;
 	private String status;

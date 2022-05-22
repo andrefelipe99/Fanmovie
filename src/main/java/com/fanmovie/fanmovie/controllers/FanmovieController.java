@@ -36,7 +36,7 @@ public class FanmovieController {
 	}
 
 	@RequestMapping(value = "/home/{id}", method = RequestMethod.GET)
-	public String index(@PathVariable("id") long id) {
+	public String indexHome(@PathVariable("id") long id) {
 		this.idUsuarioAtual = id;
 		
 		return "redirect:/home";

@@ -17,14 +17,7 @@ import com.fanmovie.fanmovie.repository.UserRepository;
 public class LoginController {
 	
 	@Autowired
-	private UserRepository repo;
-	
-	/*@RequestMapping(value = "/deslogar", method = RequestMethod.POST)
-	public String deslogar() {
-		System.out.println("a");
-		return "/";
-	}*/
-	
+	private UserRepository repo;	
 
 	@RequestMapping(value = "/logar", method = RequestMethod.POST)
 	public String logar(User user, RedirectAttributes attributes) {
